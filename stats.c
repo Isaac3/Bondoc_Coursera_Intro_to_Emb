@@ -48,6 +48,7 @@ void print_statistics(char * x ,int y)
 {
 	for(int i = 0; i<y; i++)
        	{
-		printf("%c ",x[i]);
+		printf("%d ",*(x+i));
 	}
+	printf("\n");
 }
