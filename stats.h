@@ -22,7 +22,7 @@
 #define __STATS_H__
 
 /* Add Your Declarations and Function Comments here */ 
-//void print_statistics(char * x, int y);
+void print_statistics(char * x, int y);
 /**
  * @brief A function that prints the statistics of an array including minimum,
  * 	  maximum, mean, and median.
@@ -53,7 +53,7 @@ int find_median(char *,int);
  * @return integer with the median value of the array
  */
 
-//int find_mean(char *,int);
+int find_mean(char *,int);
 /**
  * @brief Given an array of data and a length, returns the mean
  *
@@ -63,7 +63,7 @@ int find_median(char *,int);
  * @return integer with the mean value of the array
  */
 
-//int find_maximum(char *,int);
+int find_maximum(char *,int);
 /**
  * @brief Given an array of data and a length, returns the maximum
  *
@@ -73,7 +73,7 @@ int find_median(char *,int);
  * @return integer with the maximum value of the array
  */
 
-//int find_minimum(char *,int);
+int find_minimum(char *,int);
 /**
  * @brief Given an array of data and a length, return the minimum
  *

@@ -40,19 +40,20 @@ void main() {
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
  // print_statitics();
-  printf("Below is the UNSORTED array\n");
-  print_array(test,SIZE);
-  printf("\n\n");
-  printf("Below is the SORTED array\n");
-  sort_array(test,SIZE);
-  print_array(test,SIZE);
-  printf("\n\n");
-  int median = find_median(test,SIZE);
-  printf("\nThe median is %d\n\n",median);
+ print_statistics(test,SIZE);
 }
 
 
 /* Add other Implementation File Code Here */
+void print_statistics(char *x, int y)
+{
+        sort_array(x,y);	
+	printf("minimum is: %d \n", find_minimum(x,y));
+	printf("maximum is: %d \n", find_maximum(x,y));
+        printf("The median is %d \n", find_median(x,y));
+	printf("The mean is %d \n", find_mean(x,y));
+}
+
 void print_array(char * x ,int y) 
 {
 	for(int i = 0; i<y; i++)
@@ -93,11 +94,35 @@ void sort_array(char* x, int b)
 	// to the end.
 	for(int i = 0; i<b-1;i++)
 	{
-		printf("TEST[%d] = %d  and TEST[%d]= %d\n\n",i,*(x+i),i+1,*(x+i+1));
 		if(*(x+i) > *(x+i+1))
 		  swap((x+i), (x+i+1));
 	}
 
 	// Recur for the remaining element of the array
 	sort_array(x, b-1);
+}
+
+int find_mean(char *x, int b)
+{
+	int sum = 0, mean = 0;
+	for(int i = 0; i < b; i++)
+	{
+		sum += *(x+i);
+	}
+	mean = sum/b;
+
+	return mean;
+}
+
+int find_maximum(char *x, int b)
+{
+	sort_array(x,b);
+	return *(x+b-1);
+}
+
+int find_minimum(char *x, int b)
+{
+	sort_array(x,b);
+
+	return *x;
 }
