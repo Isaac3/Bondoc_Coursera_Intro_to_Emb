@@ -39,16 +39,65 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  print_statistics(test,SIZE);
+ // print_statitics();
+  printf("Below is the UNSORTED array\n");
+  print_array(test,SIZE);
+  printf("\n\n");
+  printf("Below is the SORTED array\n");
+  sort_array(test,SIZE);
+  print_array(test,SIZE);
+  printf("\n\n");
+  int median = find_median(test,SIZE);
+  printf("\nThe median is %d\n\n",median);
 }
 
 
 /* Add other Implementation File Code Here */
-void print_statistics(char * x ,int y) 
+void print_array(char * x ,int y) 
 {
 	for(int i = 0; i<y; i++)
        	{
 		printf("%d ",*(x+i));
 	}
 	printf("\n");
+}
+
+int find_median(char * x, int y)
+{
+	int median=0, temp=0;
+	if(y%2 == 0)
+	{
+	  temp = y/2;
+	  median = (*(x+temp)+*(x+temp+1))/2;
+	}
+	else
+	  median = *(x+temp+1);
+
+	return median;
+}
+
+void swap(char *a, char *b)
+{
+	char temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void sort_array(char* x, int b)
+{
+	// if b is zero, then there is only one element left
+	if(b==1)
+	  return ;
+	
+	// Bubble sort. After this pass the largest element is bubbled
+	// to the end.
+	for(int i = 0; i<b-1;i++)
+	{
+		printf("TEST[%d] = %d  and TEST[%d]= %d\n\n",i,*(x+i),i+1,*(x+i+1));
+		if(*(x+i) > *(x+i+1))
+		  swap((x+i), (x+i+1));
+	}
+
+	// Recur for the remaining element of the array
+	sort_array(x, b-1);
 }

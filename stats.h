@@ -22,7 +22,7 @@
 #define __STATS_H__
 
 /* Add Your Declarations and Function Comments here */ 
-void print_statistics(char * x, int y);
+//void print_statistics(char * x, int y);
 /**
  * @brief A function that prints the statistics of an array including minimum,
  * 	  maximum, mean, and median.
@@ -33,7 +33,7 @@ void print_statistics(char * x, int y);
  * @return NONE
  */
 
-//void print_array(char *, int);
+void print_array(char *, int);
 /**
  * @brief Given an array of data and a length, prints the array to the screen
  *
