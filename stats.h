@@ -43,7 +43,7 @@ void print_array(char *, int);
  * @return NONE
  */
 
-//int find_median(char *,int);
+int find_median(char *,int);
 /**
  * @brief Given an array of data and a length, returns the median value
  *
@@ -83,7 +83,7 @@ void print_array(char *, int);
  * @return integer with the minimum value of the array
  */
 
-//void sort_array(char *,int);
+void sort_array(char *,int);
 /**
  * @brief Given an array of data an a length, sorts the array from largest to
  * 	  smallest. (Zeroth element should be largest value)
@@ -95,5 +95,6 @@ void print_array(char *, int);
  * @return sorted array
  */
 
+void swap(char *a, char *b);
 
 #endif /* __STATS_H__ */
