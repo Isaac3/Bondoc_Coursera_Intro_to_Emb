@@ -47,9 +47,13 @@ void main() {
 /* Add other Implementation File Code Here */
 void print_statistics(char *x, int y)
 {
-        sort_array(x,y);	
-	printf("minimum is: %d \n", find_minimum(x,y));
-	printf("maximum is: %d \n", find_maximum(x,y));
+	printf("Unsorted Array is Below:\n");
+	print_array(x,y);
+        sort_array(x,y);
+	printf("\n\nSorted Array is Below:\n");
+	print_array(x,y);	
+	printf("\n\nMinimum is: %d \n", find_minimum(x,y));
+	printf("Maximum is: %d \n", find_maximum(x,y));
         printf("The median is %d \n", find_median(x,y));
 	printf("The mean is %d \n", find_mean(x,y));
 }
@@ -66,13 +70,13 @@ void print_array(char * x ,int y)
 int find_median(char * x, int y)
 {
 	int median=0, temp=0;
+	temp = y/2;
 	if(y%2 == 0)
 	{
-	  temp = y/2;
-	  median = (*(x+temp)+*(x+temp+1))/2;
+	  median = (*(x+temp-1)+*(x+temp))/2;
 	}
 	else
-	  median = *(x+temp+1);
+	  median = *(x+temp);
 
 	return median;
 }
@@ -94,7 +98,7 @@ void sort_array(char* x, int b)
 	// to the end.
 	for(int i = 0; i<b-1;i++)
 	{
-		if(*(x+i) > *(x+i+1))
+		if(*(x+i) < *(x+i+1))
 		  swap((x+i), (x+i+1));
 	}
 
@@ -117,12 +121,11 @@ int find_mean(char *x, int b)
 int find_maximum(char *x, int b)
 {
 	sort_array(x,b);
-	return *(x+b-1);
+	return *x;
 }
 
 int find_minimum(char *x, int b)
 {
 	sort_array(x,b);
-
-	return *x;
+	return *(x+b-1);
 }

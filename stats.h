@@ -96,5 +96,15 @@ void sort_array(char *,int);
  */
 
 void swap(char *a, char *b);
+/**
+ * @brief Given an array of data an a length, sorts the array from largest to
+ * 	  smallest. (Zeroth element should be largest value)
+ *
+ *
+ * @param char *a: pointer to memory location that will be swapped with b
+ * @param char *b: pointer to memory location that will be swapped with a
+ *
+ * @return none
+ */
 
 #endif /* __STATS_H__ */
