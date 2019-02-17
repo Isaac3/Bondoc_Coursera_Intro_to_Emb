@@ -21,6 +21,9 @@
 # Build Targets:
 #      <Put a description of the supported targets here>
 #      The supported targets are the HOST and the MSP432
+#      <FILE>.i - Builds <FILE>.i object file
+#      <FILE>.asm - Builds <FILE>.asm object file
+#      <FILE>.o - Builds <FILE>.o object file
 #      build - Builds and links all source files
 #      all - Same as build
 #      clean - Removes all generated files
@@ -42,11 +45,6 @@ PLATFORM = $(PLATFORM)
 
 ifeq ($(PLATFORM), HOST)
   CC = gcc
-  CPPFLAGS = 
-  CFLAGS = -Wall   \
-           -Werror \
-           -g	   \
-	   -std = c99
 	# something else should probably go here
 endif
 
@@ -60,7 +58,7 @@ ifeq ($(PLATFORM), MSP432)
   LINKER_FILE = msp432p401r.lds
   CPPFLAGS =
   CFLAGS =  -mcpu=$(CPU) -mthumb -march=$(ARCH) -mfloat-abi=hard \
-            -m$(FPU) --specs=$(SPECS) 
+            -mfpu=$(FPU) --specs=$(SPECS) 
 	# some other platform specific flag	
 endif
 
@@ -72,6 +70,7 @@ TARGET = c1m2
 FLAGS = -Wall	\
 	-Werror \
 	-g	\
+	-O0     \
 	-std=c99
 LDFLAGS = -Wl, -Map=$(TARGET).map -T $(LINKER_FILE) -O0
 CFLAGS = -mcpu=$(CPU) -m$(ARCH) --specs=$(SPECS) $(FLAGS)
@@ -79,8 +78,15 @@ CPPFLAGs =
 
 OBJS = $(SRCS:.c:.o)
 
+%.i : %.c
+	%(CC) -E $< $(CFLAGS) $(LDFLAGS) -o $@
+
+$.asm : %.c 
+	%(CC) -S $< $(CFLAGS) $(LDFLAGS) -o $@
+
 %.o : %.c 
-	%(CC) -c $< $(CFLAGS) -o $@
+	%(CC) -c $< $(CFLAGS)   -o $@
+
 
 .PHONY: build
 build: all
